@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Relatório Automático</title>
+    <title>auto-relatorio — victorylesson</title>
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700&display=swap"
       rel="stylesheet"
@@ -32,23 +32,352 @@
         margin: 0;
         padding: 0;
       }
-
       body {
         background: var(--bg);
         color: var(--text);
         font-family: var(--font-mono);
         font-size: 13px;
         line-height: 1.6;
-        min-height: 100vh;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
       }
 
+      /* ===== LANDING ===== */
+      .landing {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 80px 32px 64px;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 96px;
+      }
+      .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .nav-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 10px var(--accent);
+        animation: pulse 2.5s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          box-shadow: 0 0 8px var(--accent);
+        }
+        50% {
+          opacity: 0.5;
+          box-shadow: 0 0 4px var(--accent);
+        }
+      }
+      .nav-name {
+        font-family: var(--font-display);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+      }
+      .nav-links {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+      }
+      .nav-link {
+        font-size: 11px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--muted);
+        transition: color 0.15s;
+      }
+      .nav-link:hover {
+        color: var(--accent);
+      }
+      .nav-link.cta {
+        border: 1px solid rgba(34, 211, 160, 0.3);
+        padding: 6px 16px;
+        border-radius: 4px;
+        color: var(--accent);
+        transition: background 0.15s;
+      }
+      .nav-link.cta:hover {
+        background: rgba(34, 211, 160, 0.08);
+      }
+
+      .hero {
+        margin-bottom: 96px;
+      }
+      .hero-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--accent);
+        border: 1px solid rgba(34, 211, 160, 0.2);
+        background: rgba(34, 211, 160, 0.05);
+        padding: 5px 12px;
+        border-radius: 4px;
+        margin-bottom: 28px;
+      }
+      .hero-tag-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+      .hero-title {
+        font-family: var(--font-display);
+        font-size: clamp(36px, 6vw, 62px);
+        font-weight: 700;
+        color: var(--text);
+        line-height: 1.05;
+        letter-spacing: -1px;
+        margin-bottom: 24px;
+      }
+      .hero-title .accent {
+        color: var(--accent);
+      }
+      .hero-title .dim {
+        color: var(--muted);
+      }
+      .hero-sub {
+        font-size: 14px;
+        color: var(--label);
+        line-height: 1.8;
+        max-width: 560px;
+        margin-bottom: 36px;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--accent);
+        color: #080c10;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        padding: 12px 24px;
+        border-radius: 5px;
+        transition: opacity 0.15s;
+      }
+      .btn-primary:hover {
+        opacity: 0.85;
+      }
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid var(--border2);
+        color: var(--label);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        letter-spacing: 1px;
+        padding: 12px 24px;
+        border-radius: 5px;
+        transition:
+          border-color 0.15s,
+          color 0.15s;
+      }
+      .btn-secondary:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      .stats-bar {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 1px;
+        background: var(--border);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 96px;
+      }
+      .stat {
+        background: var(--surface);
+        padding: 24px 20px;
+        text-align: center;
+      }
+      .stat-value {
+        font-family: var(--font-display);
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+      .stat-value .accent {
+        color: var(--accent);
+      }
+      .stat-label {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .section-eyebrow {
+        font-size: 10px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 10px;
+      }
+      .section-heading {
+        font-family: var(--font-display);
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: -0.3px;
+        line-height: 1.2;
+        margin-bottom: 40px;
+      }
+      .section-heading .dim {
+        color: var(--muted);
+      }
+
+      .como-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 2px;
+        background: var(--border);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 96px;
+      }
+      .como-item {
+        background: var(--surface);
+        padding: 28px 24px;
+      }
+      .como-num {
+        font-family: var(--font-display);
+        font-size: 36px;
+        font-weight: 700;
+        color: var(--border2);
+        line-height: 1;
+        margin-bottom: 16px;
+      }
+      .como-title {
+        font-family: var(--font-display);
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 8px;
+      }
+      .como-desc {
+        font-size: 11px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      .como-code {
+        display: inline-block;
+        margin-top: 10px;
+        background: var(--surface2);
+        border: 1px solid var(--border2);
+        border-radius: 4px;
+        padding: 6px 12px;
+        font-size: 11px;
+        color: var(--accent);
+        letter-spacing: 0.5px;
+      }
+
+      .feat-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 12px;
+        margin-bottom: 80px;
+      }
+      .feat-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 24px;
+        transition: border-color 0.15s;
+      }
+      .feat-card:hover {
+        border-color: var(--border2);
+      }
+      .feat-icon {
+        font-size: 20px;
+        margin-bottom: 14px;
+        display: block;
+      }
+      .feat-title {
+        font-family: var(--font-display);
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 6px;
+      }
+      .feat-desc {
+        font-size: 11px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .demo-divider {
+        border: none;
+        border-top: 1px solid var(--border);
+      }
+      .demo-intro {
+        text-align: center;
+        padding: 56px 32px 0;
+      }
+      .demo-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 10px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--muted);
+        border: 1px solid var(--border);
+        background: var(--surface);
+        padding: 6px 16px;
+        border-radius: 4px;
+        margin-bottom: 16px;
+      }
+      .demo-heading {
+        font-family: var(--font-display);
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 8px;
+      }
+      .demo-sub {
+        font-size: 12px;
+        color: var(--muted);
+        margin-bottom: 48px;
+      }
+
+      /* ===== RELATÓRIO ===== */
+      .relatorio-wrapper {
+        border-top: 2px solid var(--border2);
+      }
       .page {
         max-width: 1000px;
         margin: 0 auto;
         padding: 48px 32px;
       }
 
-      /* HEADER */
       header {
         margin-bottom: 48px;
         display: grid;
@@ -58,17 +387,12 @@
         border-bottom: 1px solid var(--border);
         padding-bottom: 32px;
       }
-
-      .header-left {
-      }
-
       .logo-line {
         display: flex;
         align-items: center;
         gap: 10px;
         margin-bottom: 10px;
       }
-
       .logo-dot {
         width: 8px;
         height: 8px;
@@ -76,7 +400,6 @@
         background: var(--accent);
         box-shadow: 0 0 8px var(--accent);
       }
-
       .logo-text {
         font-family: var(--font-display);
         font-size: 11px;
@@ -85,7 +408,6 @@
         text-transform: uppercase;
         color: var(--accent);
       }
-
       h1 {
         font-family: var(--font-display);
         font-size: 32px;
@@ -94,18 +416,15 @@
         letter-spacing: -0.5px;
         line-height: 1.1;
       }
-
       h1 span {
         color: var(--accent);
       }
-
       .header-meta {
         display: flex;
         flex-wrap: wrap;
         gap: 8px;
         margin-top: 14px;
       }
-
       .badge {
         font-family: var(--font-mono);
         font-size: 10px;
@@ -117,11 +436,9 @@
         border-radius: 4px;
         background: var(--surface);
       }
-
       .header-right {
         text-align: right;
       }
-
       .timestamp {
         font-size: 10px;
         color: var(--muted);
@@ -130,45 +447,38 @@
         line-height: 1.8;
       }
 
-      /* SECTIONS */
-      .section {
+      .rel-section {
         margin-bottom: 48px;
       }
-
-      .section-header {
+      .rel-section-header {
         display: flex;
         align-items: center;
         gap: 12px;
         margin-bottom: 20px;
       }
-
-      .section-line {
+      .rel-section-line {
         flex: 1;
         height: 1px;
         background: var(--border);
       }
-
-      .section-label {
+      .rel-section-label {
         font-size: 10px;
         letter-spacing: 3px;
         text-transform: uppercase;
         color: var(--muted);
         white-space: nowrap;
       }
-
-      .section-num {
+      .rel-section-num {
         font-size: 10px;
         color: var(--border2);
         letter-spacing: 1px;
       }
 
-      /* ALERTAS */
       .alerta-list {
         display: flex;
         flex-direction: column;
         gap: 6px;
       }
-
       .alerta {
         display: flex;
         align-items: center;
@@ -179,19 +489,16 @@
         border-left: 3px solid var(--yellow);
         border-radius: 4px;
       }
-
       .alerta-icon {
         font-size: 14px;
         color: var(--yellow);
         flex-shrink: 0;
       }
-
       .alerta-text {
         color: #c9a830;
         font-size: 12px;
         letter-spacing: 0.5px;
       }
-
       .alerta-pct {
         margin-left: auto;
         font-size: 11px;
@@ -201,11 +508,9 @@
         border-radius: 3px;
       }
 
-      /* KPI GROUP */
       .kpi-group {
         margin-bottom: 28px;
       }
-
       .kpi-group-title {
         font-size: 10px;
         letter-spacing: 2.5px;
@@ -216,7 +521,6 @@
         align-items: center;
         gap: 8px;
       }
-
       .kpi-group-title::before {
         content: "";
         display: inline-block;
@@ -225,13 +529,11 @@
         background: var(--accent);
         border-radius: 2px;
       }
-
       .cards {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
         gap: 8px;
       }
-
       .card {
         background: var(--surface);
         border: 1px solid var(--border);
@@ -241,11 +543,9 @@
         overflow: hidden;
         transition: border-color 0.15s;
       }
-
       .card:hover {
         border-color: var(--border2);
       }
-
       .card::before {
         content: "";
         position: absolute;
@@ -256,17 +556,12 @@
         background: var(--border);
         border-radius: 6px 6px 0 0;
       }
-
       .card.highlight::before {
         background: var(--accent);
       }
       .card.warn::before {
         background: var(--yellow);
       }
-      .card.info::before {
-        background: var(--blue);
-      }
-
       .card-label {
         font-size: 9px;
         letter-spacing: 2px;
@@ -274,7 +569,6 @@
         color: var(--muted);
         margin-bottom: 6px;
       }
-
       .card-value {
         font-family: var(--font-display);
         font-size: 22px;
@@ -283,7 +577,6 @@
         line-height: 1;
         word-break: break-all;
       }
-
       .card-value.green {
         color: var(--green);
       }
@@ -294,22 +587,18 @@
         color: var(--label);
       }
 
-      /* TABELA */
       .table-wrapper {
         border: 1px solid var(--border);
         border-radius: 8px;
         overflow: hidden;
       }
-
       table {
         width: 100%;
         border-collapse: collapse;
       }
-
       thead tr {
         background: var(--surface);
       }
-
       th {
         padding: 10px 16px;
         font-size: 9px;
@@ -320,39 +609,32 @@
         border-bottom: 1px solid var(--border);
         font-weight: 500;
       }
-
       td {
         padding: 10px 16px;
         font-size: 12px;
         border-bottom: 1px solid var(--border);
         vertical-align: middle;
       }
-
       tr:last-child td {
         border-bottom: none;
       }
-
       tbody tr:hover td {
         background: var(--surface);
       }
-
       .col-name {
         color: var(--text);
         font-weight: 500;
         letter-spacing: 0.5px;
       }
-
       .col-num {
         color: var(--accent);
         font-size: 11px;
       }
-
       .pills {
         display: flex;
         flex-wrap: wrap;
         gap: 4px;
       }
-
       .pill {
         background: var(--surface2);
         border: 1px solid var(--border);
@@ -362,14 +644,120 @@
         color: var(--label);
         white-space: nowrap;
       }
-
       .pill .pill-count {
         color: var(--muted);
         font-size: 9px;
         margin-left: 4px;
       }
 
-      /* FOOTER */
+      .contexto {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 28px 32px;
+        margin-bottom: 48px;
+        position: relative;
+        overflow: hidden;
+      }
+      .contexto::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3px;
+        height: 100%;
+        background: linear-gradient(to bottom, var(--accent), transparent);
+      }
+      .contexto-title {
+        font-family: var(--font-display);
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 8px;
+      }
+      .contexto-desc {
+        font-size: 12px;
+        color: var(--label);
+        line-height: 1.8;
+        margin-bottom: 20px;
+        max-width: 680px;
+      }
+      .contexto-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      .contexto-item {
+        background: var(--surface2);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 12px 14px;
+      }
+      .contexto-item-label {
+        font-size: 9px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 4px;
+      }
+      .contexto-item-value {
+        font-size: 12px;
+        color: var(--text);
+        font-weight: 500;
+      }
+      .contexto-como {
+        border-top: 1px solid var(--border);
+        padding-top: 18px;
+        margin-top: 4px;
+      }
+      .contexto-como-title {
+        font-size: 9px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 10px;
+      }
+      .steps {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+      .step {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 11px;
+        color: var(--label);
+      }
+      .step-num {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--surface2);
+        border: 1px solid var(--border2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 9px;
+        color: var(--accent);
+        flex-shrink: 0;
+      }
+      .step-arrow {
+        color: var(--border2);
+        font-size: 10px;
+      }
+      .code-inline {
+        background: var(--surface2);
+        border: 1px solid var(--border);
+        border-radius: 3px;
+        padding: 1px 6px;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--accent);
+      }
+
       footer {
         margin-top: 56px;
         padding-top: 20px;
@@ -380,13 +768,11 @@
         flex-wrap: wrap;
         gap: 12px;
       }
-
       .footer-left {
         display: flex;
         align-items: center;
         gap: 8px;
       }
-
       .footer-dot {
         width: 5px;
         height: 5px;
@@ -394,32 +780,36 @@
         background: var(--accent);
         opacity: 0.6;
       }
-
       .footer-text {
         font-size: 10px;
         letter-spacing: 1.5px;
         color: var(--muted);
         text-transform: uppercase;
       }
-
       .footer-link {
         font-size: 10px;
         color: var(--muted);
         letter-spacing: 1px;
-        text-decoration: none;
       }
-
       .footer-link:hover {
         color: var(--accent);
       }
 
-      /* RESPONSIVE */
-      @media (max-width: 600px) {
-        .page {
-          padding: 24px 16px;
+      @media (max-width: 640px) {
+        .landing {
+          padding: 48px 20px 48px;
         }
-        h1 {
-          font-size: 24px;
+        .nav {
+          margin-bottom: 60px;
+        }
+        .nav-links {
+          gap: 14px;
+        }
+        .hero-title {
+          font-size: 32px;
+        }
+        .page {
+          padding: 32px 20px;
         }
         header {
           grid-template-columns: 1fr;
@@ -430,385 +820,658 @@
         .cards {
           grid-template-columns: repeat(2, 1fr);
         }
+        .demo-intro {
+          padding: 32px 20px 0;
+        }
       }
     </style>
   </head>
   <body>
-    <div class="page">
-      <header>
-        <div class="header-left">
-          <div class="logo-line">
-            <div class="logo-dot"></div>
-            <span class="logo-text">auto-relatorio</span>
-          </div>
-          <h1>Análise de<br /><span>Dados</span></h1>
-          <div class="header-meta">
-            <span class="badge">120 registros</span>
-            <span class="badge">10 colunas</span>
-            <span class="badge">4 numéricas</span>
-            <span class="badge">6 texto</span>
-          </div>
+    <!-- ===== LANDING ===== -->
+    <div class="landing">
+      <nav class="nav">
+        <div class="nav-brand">
+          <div class="nav-dot"></div>
+          <span class="nav-name">auto-relatorio</span>
         </div>
-        <div class="header-right">
-          <div class="timestamp">
-            Gerado em<br />
-            28/05/2026<br />
-            14:56:00
-          </div>
-        </div>
-      </header>
-
-      <!-- ALERTAS -->
-      <div class="section">
-        <div class="section-header">
-          <span class="section-num">01</span>
-          <span class="section-label">Alertas de qualidade</span>
-          <div class="section-line"></div>
-        </div>
-        <div class="alerta-list">
-          <div class="alerta">
-            <span class="alerta-icon">⚠</span>
-            <span class="alerta-text"
-              >Coluna <strong>Avaliacao</strong> — 21 valores nulos
-              detectados</span
-            >
-            <span class="alerta-pct">17.5%</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- NUMÉRICAS -->
-      <div class="section">
-        <div class="section-header">
-          <span class="section-num">02</span>
-          <span class="section-label">Colunas numéricas</span>
-          <div class="section-line"></div>
-        </div>
-
-        <div class="kpi-group">
-          <div class="kpi-group-title">QUANTIDADE</div>
-          <div class="cards">
-            <div class="card highlight">
-              <div class="card-label">Soma</div>
-              <div class="card-value green">713</div>
-            </div>
-            <div class="card">
-              <div class="card-label">Média</div>
-              <div class="card-value">5.94</div>
-            </div>
-            <div class="card">
-              <div class="card-label">Mediana</div>
-              <div class="card-value">6.0</div>
-            </div>
-            <div class="card">
-              <div class="card-label">Mínimo</div>
-              <div class="card-value muted">1.0</div>
-            </div>
-            <div class="card warn">
-              <div class="card-label">Máximo</div>
-              <div class="card-value yellow">10.0</div>
-            </div>
-            <div class="card">
-              <div class="card-label">Desvio Padrão</div>
-              <div class="card-value muted">2.7</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="kpi-group">
-          <div class="kpi-group-title">PRECO_UNITARIO</div>
-          <div class="cards">
-            <div class="card highlight">
-              <div class="card-label">Soma</div>
-              <div class="card-value green" style="font-size: 16px">
-                185.630
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-label">Média</div>
-              <div class="card-value" style="font-size: 18px">1.546,92</div>
-            </div>
-            <div class="card">
-              <div class="card-label">Mediana</div>
-              <div class="card-value" style="font-size: 18px">1.498,59</div>
-            </div>
-            <div class="card">
-              <div class="card-label">Mínimo</div>
-              <div class="card-value muted">87,32</div>
-            </div>
-            <div class="card warn">
-              <div class="card-label">Máximo</div>
-              <div class="card-value yellow" style="font-size: 18px">
-                2.990,06
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-label">Desvio Padrão</div>
-              <div class="card-value muted">817,03</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="kpi-group">
-          <div class="kpi-group-title">TOTAL</div>
-          <div class="cards">
-            <div class="card highlight">
-              <div class="card-label">Soma</div>
-              <div class="card-value green" style="font-size: 15px">
-                1.075.180
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-label">Média</div>
-              <div class="card-value" style="font-size: 17px">8.959,83</div>
-            </div>
-            <div class="card">
-              <div class="card-label">Mediana</div>
-              <div class="card-value" style="font-size: 17px">7.336,39</div>
-            </div>
-            <div class="card">
-              <div class="card-label">Mínimo</div>
-              <div class="card-value muted">247,56</div>
-            </div>
-            <div class="card warn">
-              <div class="card-label">Máximo</div>
-              <div class="card-value yellow" style="font-size: 16px">
-                24.263,10
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-label">Desvio Padrão</div>
-              <div class="card-value muted" style="font-size: 17px">
-                6.206,45
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="kpi-group">
-          <div class="kpi-group-title">AVALIACAO</div>
-          <div class="cards">
-            <div class="card highlight">
-              <div class="card-label">Soma</div>
-              <div class="card-value green">280</div>
-            </div>
-            <div class="card">
-              <div class="card-label">Média</div>
-              <div class="card-value">2.83</div>
-            </div>
-            <div class="card">
-              <div class="card-label">Mediana</div>
-              <div class="card-value">3.0</div>
-            </div>
-            <div class="card">
-              <div class="card-label">Mínimo</div>
-              <div class="card-value muted">1.0</div>
-            </div>
-            <div class="card warn">
-              <div class="card-label">Máximo</div>
-              <div class="card-value yellow">5.0</div>
-            </div>
-            <div class="card">
-              <div class="card-label">Desvio Padrão</div>
-              <div class="card-value muted">1.41</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TEXTO -->
-      <div class="section">
-        <div class="section-header">
-          <span class="section-num">03</span>
-          <span class="section-label">Colunas de texto</span>
-          <div class="section-line"></div>
-        </div>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th style="width: 120px">Coluna</th>
-                <th style="width: 80px">Únicos</th>
-                <th>Top 5 ocorrências</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="col-name">ID</td>
-                <td class="col-num">120</td>
-                <td>
-                  <div class="pills">
-                    <span class="pill"
-                      >VND-0001<span class="pill-count">×1</span></span
-                    >
-                    <span class="pill"
-                      >VND-0002<span class="pill-count">×1</span></span
-                    >
-                    <span class="pill"
-                      >VND-0003<span class="pill-count">×1</span></span
-                    >
-                    <span class="pill"
-                      >VND-0004<span class="pill-count">×1</span></span
-                    >
-                    <span class="pill"
-                      >VND-0005<span class="pill-count">×1</span></span
-                    >
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="col-name">Data</td>
-                <td class="col-num">106</td>
-                <td>
-                  <div class="pills">
-                    <span class="pill"
-                      >08/11/2024<span class="pill-count">×3</span></span
-                    >
-                    <span class="pill"
-                      >24/03/2024<span class="pill-count">×2</span></span
-                    >
-                    <span class="pill"
-                      >14/03/2024<span class="pill-count">×2</span></span
-                    >
-                    <span class="pill"
-                      >08/08/2024<span class="pill-count">×2</span></span
-                    >
-                    <span class="pill"
-                      >26/03/2024<span class="pill-count">×2</span></span
-                    >
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="col-name">Produto</td>
-                <td class="col-num">8</td>
-                <td>
-                  <div class="pills">
-                    <span class="pill"
-                      >Mouse<span class="pill-count">×20</span></span
-                    >
-                    <span class="pill"
-                      >SSD<span class="pill-count">×18</span></span
-                    >
-                    <span class="pill"
-                      >Notebook<span class="pill-count">×17</span></span
-                    >
-                    <span class="pill"
-                      >Headset<span class="pill-count">×16</span></span
-                    >
-                    <span class="pill"
-                      >Memória RAM<span class="pill-count">×14</span></span
-                    >
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="col-name">Vendedor</td>
-                <td class="col-num">5</td>
-                <td>
-                  <div class="pills">
-                    <span class="pill"
-                      >Bruno Souza<span class="pill-count">×27</span></span
-                    >
-                    <span class="pill"
-                      >Erica Costa<span class="pill-count">×26</span></span
-                    >
-                    <span class="pill"
-                      >Carla Dias<span class="pill-count">×24</span></span
-                    >
-                    <span class="pill"
-                      >Ana Lima<span class="pill-count">×23</span></span
-                    >
-                    <span class="pill"
-                      >Diego Melo<span class="pill-count">×20</span></span
-                    >
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="col-name">Região</td>
-                <td class="col-num">5</td>
-                <td>
-                  <div class="pills">
-                    <span class="pill"
-                      >Norte<span class="pill-count">×31</span></span
-                    >
-                    <span class="pill"
-                      >Oeste<span class="pill-count">×26</span></span
-                    >
-                    <span class="pill"
-                      >Centro<span class="pill-count">×24</span></span
-                    >
-                    <span class="pill"
-                      >Sul<span class="pill-count">×20</span></span
-                    >
-                    <span class="pill"
-                      >Leste<span class="pill-count">×19</span></span
-                    >
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="col-name">Status</td>
-                <td class="col-num">3</td>
-                <td>
-                  <div class="pills">
-                    <span
-                      class="pill"
-                      style="
-                        border-color: rgba(34, 211, 160, 0.3);
-                        color: #22d3a0;
-                      "
-                      >Concluído<span
-                        class="pill-count"
-                        style="color: #22d3a0aa"
-                        >×78</span
-                      ></span
-                    >
-                    <span
-                      class="pill"
-                      style="
-                        border-color: rgba(245, 200, 66, 0.3);
-                        color: #f5c842;
-                      "
-                      >Pendente<span class="pill-count" style="color: #f5c842aa"
-                        >×22</span
-                      ></span
-                    >
-                    <span
-                      class="pill"
-                      style="
-                        border-color: rgba(248, 113, 113, 0.3);
-                        color: #f87171;
-                      "
-                      >Cancelado<span
-                        class="pill-count"
-                        style="color: #f87171aa"
-                        >×20</span
-                      ></span
-                    >
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <footer>
-        <div class="footer-left">
-          <div class="footer-dot"></div>
-          <span class="footer-text"
-            >auto-relatorio — gerado automaticamente</span
+        <div class="nav-links">
+          <a href="#demo" class="nav-link">Demo</a>
+          <a
+            href="https://github.com/victorylesson/auto-relatorio"
+            target="_blank"
+            class="nav-link cta"
+            >GitHub ↗</a
           >
         </div>
-        <a
-          class="footer-link"
-          href="https://github.com/victorylesson/auto-relatorio"
-          target="_blank"
-          >github.com/victorylesson</a
-        >
-      </footer>
+      </nav>
+
+      <section class="hero">
+        <div class="hero-tag">
+          <div class="hero-tag-dot"></div>
+          Automação de dados com Python
+        </div>
+        <h2 class="hero-title">
+          Sua planilha vira<br /><span class="accent">relatório</span>
+          em<br /><span class="dim">segundos.</span>
+        </h2>
+        <p class="hero-sub">
+          Passe um arquivo
+          <code
+            style="
+              color: var(--accent);
+              background: var(--surface2);
+              padding: 1px 6px;
+              border-radius: 3px;
+              font-size: 12px;
+            "
+            >.xlsx</code
+          >
+          ou
+          <code
+            style="
+              color: var(--accent);
+              background: var(--surface2);
+              padding: 1px 6px;
+              border-radius: 3px;
+              font-size: 12px;
+            "
+            >.csv</code
+          >
+          pela linha de comando e receba um resumo estatístico completo em HTML
+          ou JSON — sem configuração, sem fórmulas, sem abrir o Excel.
+        </p>
+        <div class="hero-actions">
+          <a
+            href="https://github.com/victorylesson/auto-relatorio"
+            target="_blank"
+            class="btn-primary"
+            >Ver no GitHub <span style="font-size: 14px">↗</span></a
+          >
+          <a href="#demo" class="btn-secondary"
+            >Ver demo ao vivo <span style="font-size: 12px">↓</span></a
+          >
+        </div>
+      </section>
+
+      <div class="stats-bar">
+        <div class="stat">
+          <div class="stat-value"><span class="accent">2</span></div>
+          <div class="stat-label">Formatos de entrada</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value"><span class="accent">6</span></div>
+          <div class="stat-label">Métricas por coluna</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value"><span class="accent">0</span></div>
+          <div class="stat-label">Configuração necessária</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value"><span class="accent">2</span></div>
+          <div class="stat-label">Formatos de saída</div>
+        </div>
+      </div>
+
+      <section style="margin-bottom: 96px">
+        <div class="section-eyebrow">Como funciona</div>
+        <div class="section-heading">
+          Três passos, <span class="dim">resultado na tela.</span>
+        </div>
+        <div class="como-grid">
+          <div class="como-item">
+            <div class="como-num">01</div>
+            <div class="como-title">Clone e instale</div>
+            <div class="como-desc">
+              Baixe o repositório e instale as dependências com pip. Pandas,
+              openpyxl e Jinja2 — só isso.
+            </div>
+            <span class="como-code">pip install -r requirements.txt</span>
+          </div>
+          <div class="como-item">
+            <div class="como-num">02</div>
+            <div class="como-title">Aponte sua planilha</div>
+            <div class="como-desc">
+              Passe o arquivo como argumento. Escolha o formato de saída e a
+              pasta de destino se precisar.
+            </div>
+            <span class="como-code">python relatorio.py vendas.xlsx</span>
+          </div>
+          <div class="como-item">
+            <div class="como-num">03</div>
+            <div class="como-title">Abra o relatório</div>
+            <div class="como-desc">
+              Um HTML estilizado pronto para apresentar — ou um JSON estruturado
+              para integrar em outros pipelines.
+            </div>
+            <span class="como-code">relatorio_vendas.html ✓</span>
+          </div>
+        </div>
+      </section>
+
+      <section style="margin-bottom: 80px">
+        <div class="section-eyebrow">Funcionalidades</div>
+        <div class="section-heading">
+          O que o script <span class="dim">analisa automaticamente.</span>
+        </div>
+        <div class="feat-grid">
+          <div class="feat-card">
+            <span class="feat-icon">📊</span>
+            <div class="feat-title">Estatísticas numéricas</div>
+            <div class="feat-desc">
+              Soma, média, mediana, mínimo, máximo e desvio padrão para cada
+              coluna numérica encontrada na planilha.
+            </div>
+          </div>
+          <div class="feat-card">
+            <span class="feat-icon">🔤</span>
+            <div class="feat-title">Análise de texto</div>
+            <div class="feat-desc">
+              Top 5 valores mais frequentes por coluna de texto. Útil para
+              identificar produtos, regiões ou status mais recorrentes.
+            </div>
+          </div>
+          <div class="feat-card">
+            <span class="feat-icon">⚠️</span>
+            <div class="feat-title">Alertas de qualidade</div>
+            <div class="feat-desc">
+              Detecta e reporta colunas com valores nulos, mostrando a
+              quantidade e o percentual de dados faltantes.
+            </div>
+          </div>
+          <div class="feat-card">
+            <span class="feat-icon">📄</span>
+            <div class="feat-title">Saída HTML ou JSON</div>
+            <div class="feat-desc">
+              Exporta em HTML estilizado para apresentações ou em JSON
+              estruturado para integrar com outras ferramentas e pipelines.
+            </div>
+          </div>
+          <div class="feat-card">
+            <span class="feat-icon">📥</span>
+            <div class="feat-title">Suporte a .xlsx e .csv</div>
+            <div class="feat-desc">
+              Funciona com os dois formatos mais usados em exportações de ERP,
+              CRM e sistemas de gestão.
+            </div>
+          </div>
+          <div class="feat-card">
+            <span class="feat-icon">⚡</span>
+            <div class="feat-title">Zero configuração</div>
+            <div class="feat-desc">
+              O script detecta automaticamente o tipo de cada coluna. Sem
+              precisar mapear campos ou criar arquivos de config.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="demo-divider" />
+    </div>
+
+    <!-- ===== TRANSIÇÃO DEMO ===== -->
+    <div id="demo" class="demo-intro">
+      <div class="demo-tag">
+        <span
+          style="
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: inline-block;
+          "
+        ></span
+        >Exemplo real de saída
+      </div>
+      <div class="demo-heading">Relatório gerado automaticamente</div>
+      <div class="demo-sub">
+        Este relatório foi gerado pelo próprio script a partir de
+        <code style="color: var(--accent); font-size: 11px">demo.xlsx</code> com
+        120 registros fictícios.
+      </div>
+    </div>
+
+    <!-- ===== RELATÓRIO ===== -->
+    <div class="relatorio-wrapper">
+      <div class="page">
+        <header>
+          <div class="header-left">
+            <div class="logo-line">
+              <div class="logo-dot"></div>
+              <span class="logo-text">auto-relatorio</span>
+            </div>
+            <h1>Análise de<br /><span>Dados</span></h1>
+            <div class="header-meta">
+              <span class="badge">120 registros</span>
+              <span class="badge">10 colunas</span>
+              <span class="badge">4 numéricas</span>
+              <span class="badge">6 texto</span>
+            </div>
+          </div>
+          <div class="header-right">
+            <div class="timestamp">Gerado em<br />28/05/2026<br />14:56:00</div>
+          </div>
+        </header>
+
+        <div class="contexto">
+          <div class="contexto-title">O que é este relatório?</div>
+          <div class="contexto-desc">
+            Este arquivo foi gerado automaticamente pelo
+            <strong style="color: var(--text)">auto-relatorio</strong> — uma
+            ferramenta Python que lê planilhas
+            <span class="code-inline">.xlsx</span> ou
+            <span class="code-inline">.csv</span>, analisa cada coluna e exporta
+            um resumo estatístico completo em HTML ou JSON, sem nenhuma
+            configuração manual. <br /><br />
+            Os dados abaixo representam
+            <strong style="color: var(--text)"
+              >120 registros de vendas fictícios</strong
+            >
+            gerados pelo script
+            <span class="code-inline">gera_exemplo.py</span>, com colunas de ID,
+            data, produto, vendedor, região, status, quantidade, preço unitário,
+            total e avaliação.
+          </div>
+          <div class="contexto-grid">
+            <div class="contexto-item">
+              <div class="contexto-item-label">Arquivo analisado</div>
+              <div class="contexto-item-value">demo.xlsx</div>
+            </div>
+            <div class="contexto-item">
+              <div class="contexto-item-label">Tipo de dados</div>
+              <div class="contexto-item-value">Vendas simuladas</div>
+            </div>
+            <div class="contexto-item">
+              <div class="contexto-item-label">Período coberto</div>
+              <div class="contexto-item-value">2024 — 2026</div>
+            </div>
+            <div class="contexto-item">
+              <div class="contexto-item-label">Gerado por</div>
+              <div class="contexto-item-value">relatorio.py</div>
+            </div>
+          </div>
+          <div class="contexto-como">
+            <div class="contexto-como-title">Como reproduzir</div>
+            <div class="steps">
+              <div class="step">
+                <span class="step-num">1</span><span>Clone o repositório</span>
+              </div>
+              <span class="step-arrow">→</span>
+              <div class="step">
+                <span class="step-num">2</span
+                ><span
+                  >Execute
+                  <span class="code-inline">gera_exemplo.py</span></span
+                >
+              </div>
+              <span class="step-arrow">→</span>
+              <div class="step">
+                <span class="step-num">3</span
+                ><span
+                  >Rode
+                  <span class="code-inline"
+                    >python relatorio.py demo.xlsx</span
+                  ></span
+                >
+              </div>
+              <span class="step-arrow">→</span>
+              <div class="step">
+                <span class="step-num">4</span><span>Abra o HTML gerado</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rel-section">
+          <div class="rel-section-header">
+            <span class="rel-section-num">01</span>
+            <span class="rel-section-label">Alertas de qualidade</span>
+            <div class="rel-section-line"></div>
+          </div>
+          <div class="alerta-list">
+            <div class="alerta">
+              <span class="alerta-icon">⚠</span>
+              <span class="alerta-text"
+                >Coluna <strong>Avaliacao</strong> — 21 valores nulos
+                detectados</span
+              >
+              <span class="alerta-pct">17.5%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rel-section">
+          <div class="rel-section-header">
+            <span class="rel-section-num">02</span>
+            <span class="rel-section-label">Colunas numéricas</span>
+            <div class="rel-section-line"></div>
+          </div>
+
+          <div class="kpi-group">
+            <div class="kpi-group-title">QUANTIDADE</div>
+            <div class="cards">
+              <div class="card highlight">
+                <div class="card-label">Soma</div>
+                <div class="card-value green">713</div>
+              </div>
+              <div class="card">
+                <div class="card-label">Média</div>
+                <div class="card-value">5.94</div>
+              </div>
+              <div class="card">
+                <div class="card-label">Mediana</div>
+                <div class="card-value">6.0</div>
+              </div>
+              <div class="card">
+                <div class="card-label">Mínimo</div>
+                <div class="card-value muted">1.0</div>
+              </div>
+              <div class="card warn">
+                <div class="card-label">Máximo</div>
+                <div class="card-value yellow">10.0</div>
+              </div>
+              <div class="card">
+                <div class="card-label">Desvio Padrão</div>
+                <div class="card-value muted">2.7</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="kpi-group">
+            <div class="kpi-group-title">PRECO_UNITARIO</div>
+            <div class="cards">
+              <div class="card highlight">
+                <div class="card-label">Soma</div>
+                <div class="card-value green" style="font-size: 16px">
+                  185.630
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-label">Média</div>
+                <div class="card-value" style="font-size: 18px">1.546,92</div>
+              </div>
+              <div class="card">
+                <div class="card-label">Mediana</div>
+                <div class="card-value" style="font-size: 18px">1.498,59</div>
+              </div>
+              <div class="card">
+                <div class="card-label">Mínimo</div>
+                <div class="card-value muted">87,32</div>
+              </div>
+              <div class="card warn">
+                <div class="card-label">Máximo</div>
+                <div class="card-value yellow" style="font-size: 18px">
+                  2.990,06
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-label">Desvio Padrão</div>
+                <div class="card-value muted">817,03</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="kpi-group">
+            <div class="kpi-group-title">TOTAL</div>
+            <div class="cards">
+              <div class="card highlight">
+                <div class="card-label">Soma</div>
+                <div class="card-value green" style="font-size: 15px">
+                  1.075.180
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-label">Média</div>
+                <div class="card-value" style="font-size: 17px">8.959,83</div>
+              </div>
+              <div class="card">
+                <div class="card-label">Mediana</div>
+                <div class="card-value" style="font-size: 17px">7.336,39</div>
+              </div>
+              <div class="card">
+                <div class="card-label">Mínimo</div>
+                <div class="card-value muted">247,56</div>
+              </div>
+              <div class="card warn">
+                <div class="card-label">Máximo</div>
+                <div class="card-value yellow" style="font-size: 16px">
+                  24.263,10
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-label">Desvio Padrão</div>
+                <div class="card-value muted" style="font-size: 17px">
+                  6.206,45
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="kpi-group">
+            <div class="kpi-group-title">AVALIACAO</div>
+            <div class="cards">
+              <div class="card highlight">
+                <div class="card-label">Soma</div>
+                <div class="card-value green">280</div>
+              </div>
+              <div class="card">
+                <div class="card-label">Média</div>
+                <div class="card-value">2.83</div>
+              </div>
+              <div class="card">
+                <div class="card-label">Mediana</div>
+                <div class="card-value">3.0</div>
+              </div>
+              <div class="card">
+                <div class="card-label">Mínimo</div>
+                <div class="card-value muted">1.0</div>
+              </div>
+              <div class="card warn">
+                <div class="card-label">Máximo</div>
+                <div class="card-value yellow">5.0</div>
+              </div>
+              <div class="card">
+                <div class="card-label">Desvio Padrão</div>
+                <div class="card-value muted">1.41</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rel-section">
+          <div class="rel-section-header">
+            <span class="rel-section-num">03</span>
+            <span class="rel-section-label">Colunas de texto</span>
+            <div class="rel-section-line"></div>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 120px">Coluna</th>
+                  <th style="width: 80px">Únicos</th>
+                  <th>Top 5 ocorrências</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="col-name">ID</td>
+                  <td class="col-num">120</td>
+                  <td>
+                    <div class="pills">
+                      <span class="pill"
+                        >VND-0001<span class="pill-count">×1</span></span
+                      >
+                      <span class="pill"
+                        >VND-0002<span class="pill-count">×1</span></span
+                      >
+                      <span class="pill"
+                        >VND-0003<span class="pill-count">×1</span></span
+                      >
+                      <span class="pill"
+                        >VND-0004<span class="pill-count">×1</span></span
+                      >
+                      <span class="pill"
+                        >VND-0005<span class="pill-count">×1</span></span
+                      >
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col-name">Data</td>
+                  <td class="col-num">106</td>
+                  <td>
+                    <div class="pills">
+                      <span class="pill"
+                        >08/11/2024<span class="pill-count">×3</span></span
+                      >
+                      <span class="pill"
+                        >24/03/2024<span class="pill-count">×2</span></span
+                      >
+                      <span class="pill"
+                        >14/03/2024<span class="pill-count">×2</span></span
+                      >
+                      <span class="pill"
+                        >08/08/2024<span class="pill-count">×2</span></span
+                      >
+                      <span class="pill"
+                        >26/03/2024<span class="pill-count">×2</span></span
+                      >
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col-name">Produto</td>
+                  <td class="col-num">8</td>
+                  <td>
+                    <div class="pills">
+                      <span class="pill"
+                        >Mouse<span class="pill-count">×20</span></span
+                      >
+                      <span class="pill"
+                        >SSD<span class="pill-count">×18</span></span
+                      >
+                      <span class="pill"
+                        >Notebook<span class="pill-count">×17</span></span
+                      >
+                      <span class="pill"
+                        >Headset<span class="pill-count">×16</span></span
+                      >
+                      <span class="pill"
+                        >Memória RAM<span class="pill-count">×14</span></span
+                      >
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col-name">Vendedor</td>
+                  <td class="col-num">5</td>
+                  <td>
+                    <div class="pills">
+                      <span class="pill"
+                        >Bruno Souza<span class="pill-count">×27</span></span
+                      >
+                      <span class="pill"
+                        >Erica Costa<span class="pill-count">×26</span></span
+                      >
+                      <span class="pill"
+                        >Carla Dias<span class="pill-count">×24</span></span
+                      >
+                      <span class="pill"
+                        >Ana Lima<span class="pill-count">×23</span></span
+                      >
+                      <span class="pill"
+                        >Diego Melo<span class="pill-count">×20</span></span
+                      >
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col-name">Região</td>
+                  <td class="col-num">5</td>
+                  <td>
+                    <div class="pills">
+                      <span class="pill"
+                        >Norte<span class="pill-count">×31</span></span
+                      >
+                      <span class="pill"
+                        >Oeste<span class="pill-count">×26</span></span
+                      >
+                      <span class="pill"
+                        >Centro<span class="pill-count">×24</span></span
+                      >
+                      <span class="pill"
+                        >Sul<span class="pill-count">×20</span></span
+                      >
+                      <span class="pill"
+                        >Leste<span class="pill-count">×19</span></span
+                      >
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="col-name">Status</td>
+                  <td class="col-num">3</td>
+                  <td>
+                    <div class="pills">
+                      <span
+                        class="pill"
+                        style="
+                          border-color: rgba(34, 211, 160, 0.3);
+                          color: #22d3a0;
+                        "
+                        >Concluído<span
+                          class="pill-count"
+                          style="color: #22d3a0aa"
+                          >×78</span
+                        ></span
+                      >
+                      <span
+                        class="pill"
+                        style="
+                          border-color: rgba(245, 200, 66, 0.3);
+                          color: #f5c842;
+                        "
+                        >Pendente<span
+                          class="pill-count"
+                          style="color: #f5c842aa"
+                          >×22</span
+                        ></span
+                      >
+                      <span
+                        class="pill"
+                        style="
+                          border-color: rgba(248, 113, 113, 0.3);
+                          color: #f87171;
+                        "
+                        >Cancelado<span
+                          class="pill-count"
+                          style="color: #f87171aa"
+                          >×20</span
+                        ></span
+                      >
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <footer>
+          <div class="footer-left">
+            <div class="footer-dot"></div>
+            <span class="footer-text"
+              >auto-relatorio — gerado automaticamente</span
+            >
+          </div>
+          <a
+            class="footer-link"
+            href="https://github.com/victorylesson/auto-relatorio"
+            target="_blank"
+            >github.com/victorylesson</a
+          >
+        </footer>
+      </div>
     </div>
   </body>
 </html>
