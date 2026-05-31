@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <style>
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #22d3a0; }
+      .fg { fill: #080c10; }
+    }
+    @media (prefers-color-scheme: light) {
+      .bg { fill: #22d3a0; }
+      .fg { fill: #080c10; }
+    }
+  </style>
+  <circle class="bg" cx="50" cy="50" r="48" fill="#22d3a0"/>
+  <text class="fg" x="50" y="62" font-family="'DM Mono', monospace" font-size="42" font-weight="500" text-anchor="middle" fill="#080c10">R</text>
+</svg>
