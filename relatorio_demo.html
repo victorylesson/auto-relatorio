@@ -1,174 +1,814 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Relatorio Automatico</title>
-<style>
-  :root {
-    --bg: #0f0f0f;
-    --surface: #1a1a1a;
-    --border: #2a2a2a;
-    --accent: #e8e8e8;
-    --muted: #888;
-    --green: #4ade80;
-    --yellow: #facc15;
-    --red: #f87171;
-    --font: 'Courier New', monospace;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--accent); font-family: var(--font); font-size: 13px; padding: 32px; }
-  header { border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 28px; }
-  h1 { font-size: 22px; letter-spacing: 4px; text-transform: uppercase; }
-  .meta { color: var(--muted); font-size: 11px; margin-top: 6px; }
-  .badge { display: inline-block; background: var(--surface); border: 1px solid var(--border);
-           padding: 3px 10px; margin-right: 8px; font-size: 11px; letter-spacing: 1px; }
-  .section { margin-bottom: 32px; }
-  .section-title { font-size: 11px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase;
-                   border-bottom: 1px solid var(--border); padding-bottom: 6px; margin-bottom: 14px; }
-  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
-  .card { background: var(--surface); border: 1px solid var(--border); padding: 16px; }
-  .card-label { font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
-  .card-value { font-size: 24px; margin-top: 4px; }
-  table { width: 100%; border-collapse: collapse; }
-  th { background: var(--surface); color: var(--muted); font-size: 10px; letter-spacing: 2px;
-       text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border); }
-  td { padding: 8px 12px; border-bottom: 1px solid var(--border); font-size: 12px; }
-  tr:hover td { background: var(--surface); }
-  .alerta { background: var(--surface); border-left: 3px solid var(--yellow);
-            padding: 8px 12px; margin-bottom: 6px; font-size: 12px; color: var(--yellow); }
-  .pill { display: inline-block; background: var(--border); padding: 2px 8px;
-          font-size: 10px; margin: 2px; }
-  footer { margin-top: 40px; border-top: 1px solid var(--border); padding-top: 12px;
-           font-size: 10px; color: var(--muted); letter-spacing: 2px; }
-</style>
-</head>
-<body>
-<header>
-  <h1>Relatorio Automatico</h1>
-  <div class="meta">
-    <span class="badge">GERADO EM 28/05/2026 14:56</span>
-    <span class="badge">120 REGISTROS</span>
-    <span class="badge">10 COLUNAS</span>
-  </div>
-</header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Relatório Automático</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #080c10;
+        --surface: #0e1318;
+        --surface2: #141b22;
+        --border: rgba(255, 255, 255, 0.07);
+        --border2: rgba(255, 255, 255, 0.12);
+        --text: #e2e8f0;
+        --muted: #546a7b;
+        --label: #8fa7b5;
+        --green: #22d3a0;
+        --yellow: #f5c842;
+        --red: #f87171;
+        --blue: #60a5fa;
+        --accent: #22d3a0;
+        --font-display: "Syne", sans-serif;
+        --font-mono: "DM Mono", monospace;
+      }
 
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-<div class="section">
-  <div class="section-title">Alertas de Qualidade</div>
-  
-  <div class="alerta">⚠ 'Avaliacao': 21 valores nulos (17.5%)</div>
-  
-</div>
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-mono);
+        font-size: 13px;
+        line-height: 1.6;
+        min-height: 100vh;
+      }
 
+      .page {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 48px 32px;
+      }
 
+      /* HEADER */
+      header {
+        margin-bottom: 48px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: end;
+        gap: 24px;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 32px;
+      }
 
-<div class="section">
-  <div class="section-title">Colunas Numericas</div>
-  
-  <div style="margin-bottom:18px">
-    <div style="font-size:11px;letter-spacing:2px;color:#aaa;margin-bottom:8px">QUANTIDADE</div>
-    <div class="cards">
-      <div class="card"><div class="card-label">Soma</div><div class="card-value" style="color:var(--green)">713.0</div></div>
-      <div class="card"><div class="card-label">Media</div><div class="card-value">5.94</div></div>
-      <div class="card"><div class="card-label">Mediana</div><div class="card-value">6.0</div></div>
-      <div class="card"><div class="card-label">Minimo</div><div class="card-value" style="color:var(--muted)">1.0</div></div>
-      <div class="card"><div class="card-label">Maximo</div><div class="card-value" style="color:var(--yellow)">10.0</div></div>
-      <div class="card"><div class="card-label">Desvio Padrao</div><div class="card-value" style="color:var(--muted)">2.7</div></div>
+      .header-left {
+      }
+
+      .logo-line {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+
+      .logo-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 8px var(--accent);
+      }
+
+      .logo-text {
+        font-family: var(--font-display);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+
+      h1 {
+        font-family: var(--font-display);
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--text);
+        letter-spacing: -0.5px;
+        line-height: 1.1;
+      }
+
+      h1 span {
+        color: var(--accent);
+      }
+
+      .header-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 14px;
+      }
+
+      .badge {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--muted);
+        border: 1px solid var(--border);
+        padding: 4px 10px;
+        border-radius: 4px;
+        background: var(--surface);
+      }
+
+      .header-right {
+        text-align: right;
+      }
+
+      .timestamp {
+        font-size: 10px;
+        color: var(--muted);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        line-height: 1.8;
+      }
+
+      /* SECTIONS */
+      .section {
+        margin-bottom: 48px;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .section-line {
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+
+      .section-label {
+        font-size: 10px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+
+      .section-num {
+        font-size: 10px;
+        color: var(--border2);
+        letter-spacing: 1px;
+      }
+
+      /* ALERTAS */
+      .alerta-list {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .alerta {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        background: rgba(245, 200, 66, 0.05);
+        border: 1px solid rgba(245, 200, 66, 0.2);
+        border-left: 3px solid var(--yellow);
+        border-radius: 4px;
+      }
+
+      .alerta-icon {
+        font-size: 14px;
+        color: var(--yellow);
+        flex-shrink: 0;
+      }
+
+      .alerta-text {
+        color: #c9a830;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+      }
+
+      .alerta-pct {
+        margin-left: auto;
+        font-size: 11px;
+        color: var(--yellow);
+        background: rgba(245, 200, 66, 0.1);
+        padding: 2px 8px;
+        border-radius: 3px;
+      }
+
+      /* KPI GROUP */
+      .kpi-group {
+        margin-bottom: 28px;
+      }
+
+      .kpi-group-title {
+        font-size: 10px;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: var(--label);
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .kpi-group-title::before {
+        content: "";
+        display: inline-block;
+        width: 3px;
+        height: 12px;
+        background: var(--accent);
+        border-radius: 2px;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 8px;
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 16px;
+        position: relative;
+        overflow: hidden;
+        transition: border-color 0.15s;
+      }
+
+      .card:hover {
+        border-color: var(--border2);
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--border);
+        border-radius: 6px 6px 0 0;
+      }
+
+      .card.highlight::before {
+        background: var(--accent);
+      }
+      .card.warn::before {
+        background: var(--yellow);
+      }
+      .card.info::before {
+        background: var(--blue);
+      }
+
+      .card-label {
+        font-size: 9px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+
+      .card-value {
+        font-family: var(--font-display);
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--text);
+        line-height: 1;
+        word-break: break-all;
+      }
+
+      .card-value.green {
+        color: var(--green);
+      }
+      .card-value.yellow {
+        color: var(--yellow);
+      }
+      .card-value.muted {
+        color: var(--label);
+      }
+
+      /* TABELA */
+      .table-wrapper {
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      thead tr {
+        background: var(--surface);
+      }
+
+      th {
+        padding: 10px 16px;
+        font-size: 9px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--muted);
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+        font-weight: 500;
+      }
+
+      td {
+        padding: 10px 16px;
+        font-size: 12px;
+        border-bottom: 1px solid var(--border);
+        vertical-align: middle;
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      tbody tr:hover td {
+        background: var(--surface);
+      }
+
+      .col-name {
+        color: var(--text);
+        font-weight: 500;
+        letter-spacing: 0.5px;
+      }
+
+      .col-num {
+        color: var(--accent);
+        font-size: 11px;
+      }
+
+      .pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+      }
+
+      .pill {
+        background: var(--surface2);
+        border: 1px solid var(--border);
+        border-radius: 3px;
+        padding: 2px 8px;
+        font-size: 10px;
+        color: var(--label);
+        white-space: nowrap;
+      }
+
+      .pill .pill-count {
+        color: var(--muted);
+        font-size: 9px;
+        margin-left: 4px;
+      }
+
+      /* FOOTER */
+      footer {
+        margin-top: 56px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .footer-left {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .footer-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--accent);
+        opacity: 0.6;
+      }
+
+      .footer-text {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        color: var(--muted);
+        text-transform: uppercase;
+      }
+
+      .footer-link {
+        font-size: 10px;
+        color: var(--muted);
+        letter-spacing: 1px;
+        text-decoration: none;
+      }
+
+      .footer-link:hover {
+        color: var(--accent);
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 600px) {
+        .page {
+          padding: 24px 16px;
+        }
+        h1 {
+          font-size: 24px;
+        }
+        header {
+          grid-template-columns: 1fr;
+        }
+        .header-right {
+          text-align: left;
+        }
+        .cards {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div class="header-left">
+          <div class="logo-line">
+            <div class="logo-dot"></div>
+            <span class="logo-text">auto-relatorio</span>
+          </div>
+          <h1>Análise de<br /><span>Dados</span></h1>
+          <div class="header-meta">
+            <span class="badge">120 registros</span>
+            <span class="badge">10 colunas</span>
+            <span class="badge">4 numéricas</span>
+            <span class="badge">6 texto</span>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="timestamp">
+            Gerado em<br />
+            28/05/2026<br />
+            14:56:00
+          </div>
+        </div>
+      </header>
+
+      <!-- ALERTAS -->
+      <div class="section">
+        <div class="section-header">
+          <span class="section-num">01</span>
+          <span class="section-label">Alertas de qualidade</span>
+          <div class="section-line"></div>
+        </div>
+        <div class="alerta-list">
+          <div class="alerta">
+            <span class="alerta-icon">⚠</span>
+            <span class="alerta-text"
+              >Coluna <strong>Avaliacao</strong> — 21 valores nulos
+              detectados</span
+            >
+            <span class="alerta-pct">17.5%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- NUMÉRICAS -->
+      <div class="section">
+        <div class="section-header">
+          <span class="section-num">02</span>
+          <span class="section-label">Colunas numéricas</span>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="kpi-group">
+          <div class="kpi-group-title">QUANTIDADE</div>
+          <div class="cards">
+            <div class="card highlight">
+              <div class="card-label">Soma</div>
+              <div class="card-value green">713</div>
+            </div>
+            <div class="card">
+              <div class="card-label">Média</div>
+              <div class="card-value">5.94</div>
+            </div>
+            <div class="card">
+              <div class="card-label">Mediana</div>
+              <div class="card-value">6.0</div>
+            </div>
+            <div class="card">
+              <div class="card-label">Mínimo</div>
+              <div class="card-value muted">1.0</div>
+            </div>
+            <div class="card warn">
+              <div class="card-label">Máximo</div>
+              <div class="card-value yellow">10.0</div>
+            </div>
+            <div class="card">
+              <div class="card-label">Desvio Padrão</div>
+              <div class="card-value muted">2.7</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="kpi-group">
+          <div class="kpi-group-title">PRECO_UNITARIO</div>
+          <div class="cards">
+            <div class="card highlight">
+              <div class="card-label">Soma</div>
+              <div class="card-value green" style="font-size: 16px">
+                185.630
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-label">Média</div>
+              <div class="card-value" style="font-size: 18px">1.546,92</div>
+            </div>
+            <div class="card">
+              <div class="card-label">Mediana</div>
+              <div class="card-value" style="font-size: 18px">1.498,59</div>
+            </div>
+            <div class="card">
+              <div class="card-label">Mínimo</div>
+              <div class="card-value muted">87,32</div>
+            </div>
+            <div class="card warn">
+              <div class="card-label">Máximo</div>
+              <div class="card-value yellow" style="font-size: 18px">
+                2.990,06
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-label">Desvio Padrão</div>
+              <div class="card-value muted">817,03</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="kpi-group">
+          <div class="kpi-group-title">TOTAL</div>
+          <div class="cards">
+            <div class="card highlight">
+              <div class="card-label">Soma</div>
+              <div class="card-value green" style="font-size: 15px">
+                1.075.180
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-label">Média</div>
+              <div class="card-value" style="font-size: 17px">8.959,83</div>
+            </div>
+            <div class="card">
+              <div class="card-label">Mediana</div>
+              <div class="card-value" style="font-size: 17px">7.336,39</div>
+            </div>
+            <div class="card">
+              <div class="card-label">Mínimo</div>
+              <div class="card-value muted">247,56</div>
+            </div>
+            <div class="card warn">
+              <div class="card-label">Máximo</div>
+              <div class="card-value yellow" style="font-size: 16px">
+                24.263,10
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-label">Desvio Padrão</div>
+              <div class="card-value muted" style="font-size: 17px">
+                6.206,45
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="kpi-group">
+          <div class="kpi-group-title">AVALIACAO</div>
+          <div class="cards">
+            <div class="card highlight">
+              <div class="card-label">Soma</div>
+              <div class="card-value green">280</div>
+            </div>
+            <div class="card">
+              <div class="card-label">Média</div>
+              <div class="card-value">2.83</div>
+            </div>
+            <div class="card">
+              <div class="card-label">Mediana</div>
+              <div class="card-value">3.0</div>
+            </div>
+            <div class="card">
+              <div class="card-label">Mínimo</div>
+              <div class="card-value muted">1.0</div>
+            </div>
+            <div class="card warn">
+              <div class="card-label">Máximo</div>
+              <div class="card-value yellow">5.0</div>
+            </div>
+            <div class="card">
+              <div class="card-label">Desvio Padrão</div>
+              <div class="card-value muted">1.41</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TEXTO -->
+      <div class="section">
+        <div class="section-header">
+          <span class="section-num">03</span>
+          <span class="section-label">Colunas de texto</span>
+          <div class="section-line"></div>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 120px">Coluna</th>
+                <th style="width: 80px">Únicos</th>
+                <th>Top 5 ocorrências</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="col-name">ID</td>
+                <td class="col-num">120</td>
+                <td>
+                  <div class="pills">
+                    <span class="pill"
+                      >VND-0001<span class="pill-count">×1</span></span
+                    >
+                    <span class="pill"
+                      >VND-0002<span class="pill-count">×1</span></span
+                    >
+                    <span class="pill"
+                      >VND-0003<span class="pill-count">×1</span></span
+                    >
+                    <span class="pill"
+                      >VND-0004<span class="pill-count">×1</span></span
+                    >
+                    <span class="pill"
+                      >VND-0005<span class="pill-count">×1</span></span
+                    >
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-name">Data</td>
+                <td class="col-num">106</td>
+                <td>
+                  <div class="pills">
+                    <span class="pill"
+                      >08/11/2024<span class="pill-count">×3</span></span
+                    >
+                    <span class="pill"
+                      >24/03/2024<span class="pill-count">×2</span></span
+                    >
+                    <span class="pill"
+                      >14/03/2024<span class="pill-count">×2</span></span
+                    >
+                    <span class="pill"
+                      >08/08/2024<span class="pill-count">×2</span></span
+                    >
+                    <span class="pill"
+                      >26/03/2024<span class="pill-count">×2</span></span
+                    >
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-name">Produto</td>
+                <td class="col-num">8</td>
+                <td>
+                  <div class="pills">
+                    <span class="pill"
+                      >Mouse<span class="pill-count">×20</span></span
+                    >
+                    <span class="pill"
+                      >SSD<span class="pill-count">×18</span></span
+                    >
+                    <span class="pill"
+                      >Notebook<span class="pill-count">×17</span></span
+                    >
+                    <span class="pill"
+                      >Headset<span class="pill-count">×16</span></span
+                    >
+                    <span class="pill"
+                      >Memória RAM<span class="pill-count">×14</span></span
+                    >
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-name">Vendedor</td>
+                <td class="col-num">5</td>
+                <td>
+                  <div class="pills">
+                    <span class="pill"
+                      >Bruno Souza<span class="pill-count">×27</span></span
+                    >
+                    <span class="pill"
+                      >Erica Costa<span class="pill-count">×26</span></span
+                    >
+                    <span class="pill"
+                      >Carla Dias<span class="pill-count">×24</span></span
+                    >
+                    <span class="pill"
+                      >Ana Lima<span class="pill-count">×23</span></span
+                    >
+                    <span class="pill"
+                      >Diego Melo<span class="pill-count">×20</span></span
+                    >
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-name">Região</td>
+                <td class="col-num">5</td>
+                <td>
+                  <div class="pills">
+                    <span class="pill"
+                      >Norte<span class="pill-count">×31</span></span
+                    >
+                    <span class="pill"
+                      >Oeste<span class="pill-count">×26</span></span
+                    >
+                    <span class="pill"
+                      >Centro<span class="pill-count">×24</span></span
+                    >
+                    <span class="pill"
+                      >Sul<span class="pill-count">×20</span></span
+                    >
+                    <span class="pill"
+                      >Leste<span class="pill-count">×19</span></span
+                    >
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-name">Status</td>
+                <td class="col-num">3</td>
+                <td>
+                  <div class="pills">
+                    <span
+                      class="pill"
+                      style="
+                        border-color: rgba(34, 211, 160, 0.3);
+                        color: #22d3a0;
+                      "
+                      >Concluído<span
+                        class="pill-count"
+                        style="color: #22d3a0aa"
+                        >×78</span
+                      ></span
+                    >
+                    <span
+                      class="pill"
+                      style="
+                        border-color: rgba(245, 200, 66, 0.3);
+                        color: #f5c842;
+                      "
+                      >Pendente<span class="pill-count" style="color: #f5c842aa"
+                        >×22</span
+                      ></span
+                    >
+                    <span
+                      class="pill"
+                      style="
+                        border-color: rgba(248, 113, 113, 0.3);
+                        color: #f87171;
+                      "
+                      >Cancelado<span
+                        class="pill-count"
+                        style="color: #f87171aa"
+                        >×20</span
+                      ></span
+                    >
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <footer>
+        <div class="footer-left">
+          <div class="footer-dot"></div>
+          <span class="footer-text"
+            >auto-relatorio — gerado automaticamente</span
+          >
+        </div>
+        <a
+          class="footer-link"
+          href="https://github.com/victorylesson/auto-relatorio"
+          target="_blank"
+          >github.com/victorylesson</a
+        >
+      </footer>
     </div>
-  </div>
-  
-  <div style="margin-bottom:18px">
-    <div style="font-size:11px;letter-spacing:2px;color:#aaa;margin-bottom:8px">PRECO_UNITARIO</div>
-    <div class="cards">
-      <div class="card"><div class="card-label">Soma</div><div class="card-value" style="color:var(--green)">185630.48</div></div>
-      <div class="card"><div class="card-label">Media</div><div class="card-value">1546.92</div></div>
-      <div class="card"><div class="card-label">Mediana</div><div class="card-value">1498.59</div></div>
-      <div class="card"><div class="card-label">Minimo</div><div class="card-value" style="color:var(--muted)">87.32</div></div>
-      <div class="card"><div class="card-label">Maximo</div><div class="card-value" style="color:var(--yellow)">2990.06</div></div>
-      <div class="card"><div class="card-label">Desvio Padrao</div><div class="card-value" style="color:var(--muted)">817.03</div></div>
-    </div>
-  </div>
-  
-  <div style="margin-bottom:18px">
-    <div style="font-size:11px;letter-spacing:2px;color:#aaa;margin-bottom:8px">TOTAL</div>
-    <div class="cards">
-      <div class="card"><div class="card-label">Soma</div><div class="card-value" style="color:var(--green)">1075180.04</div></div>
-      <div class="card"><div class="card-label">Media</div><div class="card-value">8959.83</div></div>
-      <div class="card"><div class="card-label">Mediana</div><div class="card-value">7336.39</div></div>
-      <div class="card"><div class="card-label">Minimo</div><div class="card-value" style="color:var(--muted)">247.56</div></div>
-      <div class="card"><div class="card-label">Maximo</div><div class="card-value" style="color:var(--yellow)">24263.1</div></div>
-      <div class="card"><div class="card-label">Desvio Padrao</div><div class="card-value" style="color:var(--muted)">6206.45</div></div>
-    </div>
-  </div>
-  
-  <div style="margin-bottom:18px">
-    <div style="font-size:11px;letter-spacing:2px;color:#aaa;margin-bottom:8px">AVALIACAO</div>
-    <div class="cards">
-      <div class="card"><div class="card-label">Soma</div><div class="card-value" style="color:var(--green)">280.0</div></div>
-      <div class="card"><div class="card-label">Media</div><div class="card-value">2.83</div></div>
-      <div class="card"><div class="card-label">Mediana</div><div class="card-value">3.0</div></div>
-      <div class="card"><div class="card-label">Minimo</div><div class="card-value" style="color:var(--muted)">1.0</div></div>
-      <div class="card"><div class="card-label">Maximo</div><div class="card-value" style="color:var(--yellow)">5.0</div></div>
-      <div class="card"><div class="card-label">Desvio Padrao</div><div class="card-value" style="color:var(--muted)">1.41</div></div>
-    </div>
-  </div>
-  
-</div>
-
-
-
-<div class="section">
-  <div class="section-title">Colunas de Texto</div>
-  <table>
-    <tr>
-      <th>Coluna</th>
-      <th>Valores Unicos</th>
-      <th>Top 5 Ocorrencias</th>
-    </tr>
-    
-    <tr>
-      <td>ID</td>
-      <td>120</td>
-      <td><span class="pill">VND-0001: 1</span><span class="pill">VND-0002: 1</span><span class="pill">VND-0003: 1</span><span class="pill">VND-0004: 1</span><span class="pill">VND-0005: 1</span></td>
-    </tr>
-    
-    <tr>
-      <td>Data</td>
-      <td>106</td>
-      <td><span class="pill">08/11/2024: 3</span><span class="pill">24/03/2024: 2</span><span class="pill">14/03/2024: 2</span><span class="pill">08/08/2024: 2</span><span class="pill">26/03/2024: 2</span></td>
-    </tr>
-    
-    <tr>
-      <td>Produto</td>
-      <td>8</td>
-      <td><span class="pill">Mouse: 20</span><span class="pill">SSD: 18</span><span class="pill">Notebook: 17</span><span class="pill">Headset: 16</span><span class="pill">Memoria RAM: 14</span></td>
-    </tr>
-    
-    <tr>
-      <td>Vendedor</td>
-      <td>5</td>
-      <td><span class="pill">Bruno Souza: 27</span><span class="pill">Erica Costa: 26</span><span class="pill">Carla Dias: 24</span><span class="pill">Ana Lima: 23</span><span class="pill">Diego Melo: 20</span></td>
-    </tr>
-    
-    <tr>
-      <td>Regiao</td>
-      <td>5</td>
-      <td><span class="pill">Norte: 31</span><span class="pill">Oeste: 26</span><span class="pill">Centro: 24</span><span class="pill">Sul: 20</span><span class="pill">Leste: 19</span></td>
-    </tr>
-    
-    <tr>
-      <td>Status</td>
-      <td>3</td>
-      <td><span class="pill">Concluido: 78</span><span class="pill">Pendente: 22</span><span class="pill">Cancelado: 20</span></td>
-    </tr>
-    
-  </table>
-</div>
-
-
-<footer>
-  AUTO-RELATORIO &nbsp;|&nbsp; github.com/victorylesson &nbsp;|&nbsp; GERADO AUTOMATICAMENTE EM 28/05/2026 14:56
-</footer>
-</body>
+  </body>
 </html>
