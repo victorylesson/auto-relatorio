@@ -21,7 +21,7 @@ Lê arquivos `.xlsx` ou `.csv`, analisa automaticamente as colunas e gera relat�
 ### Instalação
 
 ```bash
-git clone https://github.com/seu-usuario/auto-relatorio.git
+git clone (https://github.com/victorylesson/auto-relatorio.git)
 cd auto-relatorio
 pip install -r requirements.txt
 ```
@@ -118,6 +118,12 @@ Dado um arquivo `vendas.csv` com colunas como `valor`, `produto`, `regiao`:
 - Validação de qualidade de dados antes de importar
 - Geração de relatórios periódicos automatizados via `cron` ou agendador
 - Integração em pipelines de dados simples
+
+
+## 🌐 Demo
+
+Veja um exemplo do relatório gerado em:  
+🔗 [https://auto-relatorio-three.vercel.app/](https://auto-relatorio-three.vercel.app/)
 
 ---
 
