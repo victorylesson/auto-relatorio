@@ -21,7 +21,7 @@ Lê arquivos `.xlsx` ou `.csv`, analisa automaticamente as colunas e gera relat�
 ### Instalação
 
 ```bash
-git clone (https://github.com/victorylesson/auto-relatorio.git)
+git clone https://github.com/victorylesson/auto-relatorio.git
 cd auto-relatorio
 pip install -r requirements.txt
 ```
